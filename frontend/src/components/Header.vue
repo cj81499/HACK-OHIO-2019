@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <img src="../assets/ENGIE-Logo.png" alt="ENGIE logo" />
+    <img src="../assets/logo.svg" alt="ENGIE logo" />
   </div>
 </template>
 
