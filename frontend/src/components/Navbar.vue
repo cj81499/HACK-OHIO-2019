@@ -37,20 +37,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 h1 {
   font-size: 2.3em;
   font-weight: bold;
   margin-top: 40px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  display: inline;
 }
 
 a {
@@ -61,20 +52,29 @@ a {
   text-decoration: none;
 }
 
-li:not(:last-child)::after {
-  content: "|";
-  margin: 0 30px;
-  font-weight: bold;
-  color: #404040;
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: inline;
+
+  &:not(:last-child)::after {
+    content: "|";
+    margin: 0 30px;
+    font-weight: bold;
+    color: #404040;
+  }
 }
 
 .active {
   color: inherit;
   transition: all 0.2s;
-}
 
-.active:hover {
-  cursor: pointer;
-  color: #ccc;
+  &:hover {
+    cursor: pointer;
+    color: #ccc;
+  }
 }
 </style>
