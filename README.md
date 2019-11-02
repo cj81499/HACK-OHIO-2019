@@ -1,6 +1,6 @@
 # HACK-OHIO-2019
 
-Contributers
+Contributors
 
 - Alex Williams
 - Cal Jacobson
