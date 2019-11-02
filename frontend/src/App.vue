@@ -2,18 +2,21 @@
   <div id="app">
     <Header />
     <Navbar />
+    <MapPreview />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Navbar from "./components/Navbar.vue";
+import MapPreview from "./components/MapPreview.vue";
 
 export default {
   name: "app",
   components: {
     Header,
-    Navbar
+    Navbar,
+    MapPreview
   }
 };
 </script>
