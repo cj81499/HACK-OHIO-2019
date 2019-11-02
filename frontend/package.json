@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.3.2",
     "mapbox-gl": "^1.5.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-good-table": "^2.18.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
