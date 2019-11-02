@@ -1,4 +1,4 @@
-# HACK-OHIO-2019
+# HACK OHI/O 2019
 
 Contributors
 
