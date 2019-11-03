@@ -4,7 +4,7 @@
 -- tables
 -- Table: buildings
 CREATE TABLE IF NOT EXISTS buildings (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     label TEXT NOT NULL,
     latitude DOUBLE NOT NULL,
     longitude DOUBLE NOT NULL,
@@ -20,7 +20,7 @@ CREATE INDEX long_idx ON buildings (longitude);
 
 -- Table: campuses
 CREATE TABLE IF NOT EXISTS campuses (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     label TEXT NOT NULL
 );
 
@@ -28,7 +28,7 @@ CREATE INDEX campus_name ON campuses (label);
 
 -- Table: meters
 CREATE TABLE IF NOT EXISTS meters (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     label TEXT NOT NULL,
     buildingID INT NOT NULL,
     unitID INT NOT NULL,
@@ -42,7 +42,7 @@ CREATE INDEX meter_name ON meters (label);
 
 -- Table: readings
 CREATE TABLE IF NOT EXISTS readings (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     meterID INT NOT NULL,
     measurement DOUBLE NOT NULL,
     created DATETIME NOT NULL,
@@ -53,7 +53,7 @@ CREATE INDEX time_idx ON readings (created);
 
 -- Table: resources
 CREATE TABLE IF NOT EXISTS resources (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     label TEXT NOT NULL
 );
 
@@ -61,7 +61,7 @@ CREATE INDEX resource_name ON resources (label);
 
 -- Table: units
 CREATE TABLE IF NOT EXISTS units (
-    id INT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     unit TEXT NOT NULL
 );
 
