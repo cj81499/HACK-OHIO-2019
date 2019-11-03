@@ -1,6 +1,5 @@
 <script>
 import { Line } from "vue-chartjs";
-import Axios from "axios";
 
 export default {
   extends: Line,
@@ -15,10 +14,6 @@ export default {
     }
   },
   mounted() {
-    Axios.get("http://localhost:3000/usages?building=union").then(response =>
-      console.log(response)
-    );
-
     this.renderChart(this.chartdata, this.options);
   }
 };

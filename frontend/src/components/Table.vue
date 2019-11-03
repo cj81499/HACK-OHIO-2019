@@ -34,6 +34,7 @@
 // import the styles
 import "vue-good-table/dist/vue-good-table.css";
 import { VueGoodTable } from "vue-good-table";
+import Axios from "axios";
 
 export default {
   // add to component
