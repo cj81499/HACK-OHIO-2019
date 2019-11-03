@@ -17,6 +17,7 @@
 <script>
 import Header from "./components/Header.vue";
 import Navbar from "./components/Navbar.vue";
+import MapPreview from "./components/MapPreview.vue";
 import Table from "./components/Table.vue";
 
 export default {
@@ -24,12 +25,15 @@ export default {
   components: {
     Header,
     Navbar,
+    MapPreview,
     Table
   }
 };
 </script>
 
 <style lang="scss">
+@import "./styles/constants.scss";
+
 @font-face {
   font-family: "Avenir";
   src: url("assets/Avenir Roman.otf");
@@ -39,13 +43,16 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .grid-container {
   display: grid;
   grid-column-gap: 10px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   padding: 10px;
+
+  flex-grow: 1;
 }
 
 .grid-items {
@@ -53,19 +60,21 @@ body {
   box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow,
     0 4px 4px $shadow, 0 8px 8px $shadow,
     0 16px 16px $shadow;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
-  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
   padding: 1rem;
+  height: 100%;
 }
 
 
 #app {
+  display: flex;
+  flex-direction: column;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #606060;
+  height: 100%;
 }
 </style>
