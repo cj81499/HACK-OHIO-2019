@@ -6,7 +6,8 @@
       :rows="rows"
       :pagination-options="{
         enabled: true,
-        perPage: 10,
+        perPage: 11,
+        perPageDropdown: [11],
         mode: 'pages',
         nextLabel: '',
         prevLabel: '',
