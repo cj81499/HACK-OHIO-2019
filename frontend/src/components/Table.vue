@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="flex-container">
+      <div>Cold Water</div>
+      <div>Hot Water</div>
+      <div>Steam</div>
+      <div>Electricity</div>
+    </div>
     <vue-good-table
       class="table"
       :columns="columns"
@@ -174,4 +180,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex-container > div {
+  background-color: #00aaff;
+  color: white;
+  padding: 4px 20px;
+  font-size: 1.5rem;
+  border-radius: 10px 10px 0px 0px;
+}
 </style>
