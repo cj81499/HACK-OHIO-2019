@@ -1,6 +1,9 @@
 <template>
-    <div class="map-container">
-      <Mapbox
+  <div class="map-container">
+    <router-link class="back-button" id="map-link" :to="'/'">
+      <img src="../assets/back.svg" id="back-button" />
+    </router-link>
+    <Mapbox
       access-token="pk.eyJ1IjoiY2hlZWJvbGR6IiwiYSI6ImNrMmkzN3NyMTBraTkzbG52ZTlvcWhpd3UifQ.NkY5P6WUwj290eaSOTlH1Q"
       :map-options="{
         style: 'mapbox://styles/cheeboldz/ck2i7gmwn13fd1cme16htwxoc',
@@ -9,10 +12,7 @@
       }"
       @map-load="loaded"
     ></Mapbox>
-    <div class="map-navigation">
-        <span>Energy Usage</span>
-    </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -25,68 +25,64 @@ export default {
   },
   methods: {
     loaded(map) {
-     map.addLayer({
-        id: 'energy',
-        type: 'heatmap',
+      map.addLayer({
+        id: "energy",
+        type: "heatmap",
         paint: {
-            "heatmap-weight": [
-                "interpolate",
-                ["linear"],
-                ["get", "reading"],
-                0, 0,
-                6, 1
-            ],
-            "heatmap-radius": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                0, 10,
-                9, 30
-            ],
+          "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get", "reading"],
+            0,
+            0,
+            6,
+            1
+          ],
+          "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 10, 9, 30]
         },
         source: {
-          type: 'geojson',
+          type: "geojson",
           data: {
-            type: 'FeatureCollection',
+            type: "FeatureCollection",
             features: [
-                {
-                type: 'Feature',
+              {
+                type: "Feature",
                 geometry: {
-                  type: 'Point',
-                  coordinates: [-83.0086, 39.9977],
+                  type: "Point",
+                  coordinates: [-83.0086, 39.9977]
                 },
                 properties: {
-                    reading: 1000
+                  reading: 1000
                 }
-                },
-                {
-                type: 'Feature',
+              },
+              {
+                type: "Feature",
                 geometry: {
-                  type: 'Point',
-                  coordinates: [-83.0091, 39.9972],
+                  type: "Point",
+                  coordinates: [-83.0091, 39.9972]
                 },
                 properties: {
-                    reading: 10
+                  reading: 10
                 }
-                },
-                {
-                type: 'Feature',
+              },
+              {
+                type: "Feature",
                 geometry: {
-                  type: 'Point',
-                  coordinates: [-83.0091, 39.9972],
+                  type: "Point",
+                  coordinates: [-83.0091, 39.9972]
                 },
                 properties: {
-                    reading: 10
+                  reading: 10
                 }
-                },
-                {
-                type: 'Feature',
+              },
+              {
+                type: "Feature",
                 geometry: {
-                  type: 'Point',
-                  coordinates: [-83.0091, 39.9972],
+                  type: "Point",
+                  coordinates: [-83.0091, 39.9972]
                 },
                 properties: {
-                    reading: 10
+                  reading: 10
                 }
               }
             ]
@@ -101,31 +97,38 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "../styles/constants.scss";
+@import "../styles/constants.scss";
 
-    #map {
-        height: 100%;
-    }
+#map {
+  height: 100%;
+}
 
-    .map-container {
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
+.back-button {
+  position: fixed;
+  top: 0;
+  left: 0;
 
-    .map-navigation {
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        top: 1em;
-        left: 1em;
+  padding: 7px;
+}
 
-        height: 50%;
-        width: 20%;
-        padding: 1em 1em;
+.map-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
 
-        border-radius: $border-radius;
-        background-color: white;
+.map-navigation {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 1em;
+  left: 1em;
 
-    }
+  height: 50%;
+  width: 20%;
+  padding: 1em 1em;
+
+  border-radius: $border-radius;
+  background-color: white;
+}
 </style>
