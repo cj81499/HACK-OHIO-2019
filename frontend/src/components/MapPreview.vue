@@ -5,7 +5,7 @@
       :map-options="{
         style: 'mapbox://styles/cheeboldz/ck2i7gmwn13fd1cme16htwxoc',
         center: [-83.0127, 39.9996],
-        zoom: 16,
+        zoom: 15,
       }"
       @map-load="loaded"
     ></Mapbox>
@@ -19,12 +19,135 @@
 import Mapbox from "mapbox-gl-vue";
 
 export default {
-  name: "MapPreview",
+  name: "Map",
   components: {
     Mapbox
   },
   methods: {
     loaded(map) {
+      map.addLayer({
+        id: "energy",
+        type: "heatmap",
+        paint: {
+          "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get", "reading"],
+            0,0,
+            6,1
+          ],
+          "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 10, 9, 30]
+        },
+        source: {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                geometry: {
+                  type: "Point",
+                  coordinates: [-83.0086, 39.9977]
+                },
+                properties: {
+                    reading: 200
+                }
+              },
+              {
+                type: "Feature",
+                geometry: {
+                  type: "Point",
+                  coordinates: [-83.0091, 39.9972]
+                },
+                properties: {
+                    reading: 200
+                }
+              },
+              {
+                type: "Feature",
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.010170, 39.996303],
+                },
+                properties: {
+                    reading: 1150
+                }
+              },
+              {
+                type: "Feature",
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.010642, 39.995777],
+                },
+                properties: {
+                    reading: 150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.009697, 40.000807],
+                },
+                properties: {
+                    reading: 150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.009697, 40.000807],
+                },
+                properties: {
+                    reading: 150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                }
+            ]
+          }
+        }
+      });
+
       map.resize();
     }
   }
