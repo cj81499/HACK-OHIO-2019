@@ -59,14 +59,12 @@ body {
 
 .grid-item {
   $shadow: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow,
-    0 4px 4px $shadow, 0 8px 8px $shadow,
-    0 16px 16px $shadow;
+  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow, 0 4px 4px $shadow,
+    0 8px 8px $shadow, 0 16px 16px $shadow;
   border: 1px solid #ccc;
   border-radius: $border-radius;
   padding: 1rem;
 }
-
 
 #app {
   display: flex;
