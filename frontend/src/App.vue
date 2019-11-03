@@ -6,10 +6,10 @@
       <div class="grid-items">
         <Table />
       </div>
-      <div class="grid-items rounded">
+      <div class="grid-items">
         <MapPreview />
       </div>
-      <div class="grid-items rounded"></div>
+      <div class="grid-items"></div>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @font-face {
   font-family: "Avenir";
   src: url("assets/Avenir Roman.otf");
@@ -48,15 +48,18 @@ body {
   padding: 10px;
 }
 
-.rounded {
+.grid-items {
+  $shadow: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow,
+    0 4px 4px $shadow, 0 8px 8px $shadow,
+    0 16px 16px $shadow;
   border-style: solid;
-  border-width: 0.5px;
-  border-color: #ccc;
+  border-width: 1px;
+  border-color: #cccccc;
   border-radius: 10px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-    0 16px 16px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
 }
+
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
