@@ -56,7 +56,7 @@ export default {
                   coordinates: [-83.0086, 39.9977],
                 },
                 properties: {
-                    reading: 1000
+                    reading: 200
                 }
                 },
                 {
@@ -66,29 +66,89 @@ export default {
                   coordinates: [-83.0091, 39.9972],
                 },
                 properties: {
-                    reading: 10
+                    reading: 200
                 }
                 },
                 {
                 type: 'Feature',
                 geometry: {
                   type: 'Point',
-                  coordinates: [-83.0091, 39.9972],
+                  coordinates: [-83.010170, 39.996303],
                 },
                 properties: {
-                    reading: 10
+                    reading: 1150
                 }
                 },
                 {
                 type: 'Feature',
                 geometry: {
                   type: 'Point',
-                  coordinates: [-83.0091, 39.9972],
+                  coordinates: [-83.010642, 39.995777],
                 },
                 properties: {
-                    reading: 10
+                    reading: 150
                 }
-              }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.009697, 40.000807],
+                },
+                properties: {
+                    reading: 150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.009697, 40.000807],
+                },
+                properties: {
+                    reading: 150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.014810, 39.999196],
+                },
+                properties: {
+                    reading: 1150
+                }
+                }
             ]
           }
         }
