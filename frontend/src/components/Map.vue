@@ -1,25 +1,22 @@
 <template>
-  <div class="container">
-    <Mapbox
+    <div class="map-container">
+      <Mapbox
       access-token="pk.eyJ1IjoiY2hlZWJvbGR6IiwiYSI6ImNrMmkzN3NyMTBraTkzbG52ZTlvcWhpd3UifQ.NkY5P6WUwj290eaSOTlH1Q"
       :map-options="{
         style: 'mapbox://styles/cheeboldz/ck2i7gmwn13fd1cme16htwxoc',
         center: [-83.0127, 39.9996],
-        zoom: 16,
+        zoom: 14,
       }"
       @map-load="loaded"
     ></Mapbox>
-    <router-link id="map-link" :to="'map'">
-      <img src="../assets/fullscreen.svg" alt="Fullscreen">
-    </router-link>
-  </div>
+    </div>
 </template>
 
 <script>
 import Mapbox from "mapbox-gl-vue";
 
 export default {
-  name: "MapPreview",
+  name: "Map",
   components: {
     Mapbox
   },
@@ -31,23 +28,13 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../styles/constants.scss";
+<style lang="scss">
+    .map-container {
+        height: 100%;
+        width: 100%;
+    }
 
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-#map {
-  height: 100%;
-  border-radius: $border-radius;
-}
-
-#map-link {
-  position: absolute;
-  bottom: 0;
-  right: 2.5em;
-}
+    #map {
+        height: 100%;
+    }
 </style>

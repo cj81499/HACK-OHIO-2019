@@ -1,4 +1,6 @@
 <template>
+  <div class="dashboard-container">
+    <Navbar />
     <div class="grid-container">
       <div class="grid-items">
         <Table />
@@ -8,17 +10,20 @@
       </div>
       <div class="grid-items"></div>
     </div>
+  </div>
 </template>
 
 <script>
 import MapPreview from "./MapPreview.vue";
+import Navbar from "./Navbar.vue";
 import Table from "./Table.vue";
 
 export default {
   name: "Dashboard",
   components: {
     MapPreview,
-    Table,
+    Navbar,
+    Table
   }
 };
 </script>
