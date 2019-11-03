@@ -20,7 +20,7 @@ export default {
 }
 
 img {
-  width: 15rem;
+  height: 2.5rem;
 }
 </style>
 

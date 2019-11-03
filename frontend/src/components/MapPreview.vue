@@ -1,28 +1,45 @@
 <template>
-  <div id="map"></div>
+  <div class="container">
+    <Mapbox
+      access-token="pk.eyJ1IjoiY2hlZWJvbGR6IiwiYSI6ImNrMmkzN3NyMTBraTkzbG52ZTlvcWhpd3UifQ.NkY5P6WUwj290eaSOTlH1Q"
+      :map-options="{
+        style: 'mapbox://styles/cheeboldz/ck2i7gmwn13fd1cme16htwxoc',
+        center: [-83.0127, 39.9996],
+        zoom: 14,
+      }"
+      @map-load="loaded"
+    ></Mapbox>
+  </div>
 </template>
 
 <script>
+import Mapbox from "mapbox-gl-vue";
+
 export default {
   name: "MapPreview",
-  mounted: () => {
-    var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
-
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiZGlkZ2VyaWRvb21oIiwiYSI6ImNqbnJ5M2xldTAyeW8za28ybm43NzA4aHIifQ.7Cz8hPXu178_FltdCwp9Xw";
-
-    new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [-74.5, 40],
-      zoom: 9
-    });
+  components: {
+    Mapbox
+  },
+  methods: {
+    loaded(map) {
+      map.resize();
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-#map {
+@import "../styles/constants.scss";
+
+.container {
   width: 100%;
+  height: 100%;
+}
+
+#map {
+  $margin: 15px;
+  margin: $margin;
+  height: calc(100% - 2 * #{$margin});
+  border-radius: $border-radius;
 }
 </style>

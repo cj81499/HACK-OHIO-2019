@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.3.2",
-    "mapbox-gl": "^1.5.0",
+    "mapbox-gl-vue": "^2.0.3",
     "vue": "^2.6.10",
     "vue-good-table": "^2.18.0"
   },

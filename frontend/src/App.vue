@@ -4,10 +4,10 @@
     <Navbar />
     <div class="grid-container">
       <div class="grid-items">
-        <MapPreview />
+        <Table />
       </div>
       <div class="grid-items">
-        <Table />
+        <MapPreview />
       </div>
       <div class="grid-items">
         <Table />
@@ -33,7 +33,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "./styles/constants.scss";
+
 @font-face {
   font-family: "Avenir";
   src: url("assets/Avenir Roman.otf");
@@ -43,27 +45,35 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .grid-container {
   display: grid;
   grid-column-gap: 10px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   padding: 10px;
+
+  flex-grow: 1;
 }
+
 .grid-items {
   border: 0.5px solid #00aaff;
-  border-radius: 10px;
+  border-radius: $border-radius;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
     0 16px 16px rgba(0, 0, 0, 0.12);
+  height: 100%;
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #606060;
+  height: 100%;
 }
 </style>
