@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>The Ohio State University</h1>
     <ul id="nav-bar">
       <li v-for="link in links" v-bind:key="link.title">
         <a href="#" v-bind:class="{active: link.isActive}">{{ link.title }}</a>
@@ -38,14 +37,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1 {
-  font-size: 2.3em;
-  font-weight: bold;
-  margin-top: 40px;
-}
 
 a {
-  font-size: 1em;
+  font-size: 1.25em;
   transition: all 0.2s ease-in;
   color: #999;
   cursor: default;
@@ -54,7 +48,7 @@ a {
 
 ul {
   list-style: none;
-  padding: 0;
+  padding: 2em 0 1em 0;
 }
 
 li {
