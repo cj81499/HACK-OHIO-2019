@@ -51,7 +51,6 @@ body {
   grid-column-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
-
   flex-grow: 1;
 }
 
@@ -63,7 +62,6 @@ body {
   border: 1px solid #ccc;
   border-radius: $border-radius;
   padding: 1rem;
-  height: 100%;
 }
 
 
