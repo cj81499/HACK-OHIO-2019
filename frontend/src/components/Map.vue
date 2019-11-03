@@ -5,10 +5,13 @@
       :map-options="{
         style: 'mapbox://styles/cheeboldz/ck2i7gmwn13fd1cme16htwxoc',
         center: [-83.0127, 39.9996],
-        zoom: 14,
+        zoom: 16,
       }"
       @map-load="loaded"
     ></Mapbox>
+    <div class="map-navigation">
+        <span>Energy Usage</span>
+    </div>
     </div>
 </template>
 
@@ -22,6 +25,75 @@ export default {
   },
   methods: {
     loaded(map) {
+     map.addLayer({
+        id: 'energy',
+        type: 'heatmap',
+        paint: {
+            "heatmap-weight": [
+                "interpolate",
+                ["linear"],
+                ["get", "reading"],
+                0, 0,
+                6, 1
+            ],
+            "heatmap-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                0, 10,
+                9, 30
+            ],
+        },
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: [
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.0086, 39.9977],
+                },
+                properties: {
+                    reading: 1000
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.0091, 39.9972],
+                },
+                properties: {
+                    reading: 10
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.0091, 39.9972],
+                },
+                properties: {
+                    reading: 10
+                }
+                },
+                {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-83.0091, 39.9972],
+                },
+                properties: {
+                    reading: 10
+                }
+              }
+            ]
+          }
+        }
+      });
+
       map.resize();
     }
   }
@@ -29,12 +101,31 @@ export default {
 </script>
 
 <style lang="scss">
+    @import "../styles/constants.scss";
+
+    #map {
+        height: 100%;
+    }
+
     .map-container {
+        position: relative;
         height: 100%;
         width: 100%;
     }
 
-    #map {
-        height: 100%;
+    .map-navigation {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 1em;
+        left: 1em;
+
+        height: 50%;
+        width: 20%;
+        padding: 1em 1em;
+
+        border-radius: $border-radius;
+        background-color: white;
+
     }
 </style>
