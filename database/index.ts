@@ -1,6 +1,10 @@
 import { createReadStream, readdirSync, writeFileSync } from "fs";
 import { createInterface } from "readline";
 import { updateUnits } from "./updateUnits";
+import { updateMeters } from "./updateMeters";
+import { updateCampuses } from "./updateCampuses";
+import { updateResources } from "./updateResources";
+import { updateBuildings } from "./updateBuildings";
 
 const processConfigFile = () =>
   new Promise((resolve, reject) => {
@@ -18,10 +22,10 @@ const processConfigFile = () =>
       const elements = line.trim().split('","');
 
       const [
-        buildingId,
+        _buildingId,
         meterId,
         _description,
-        units,
+        unit,
         resource,
         buildingName,
         _grossSquareFeet,
@@ -43,7 +47,10 @@ const processConfigFile = () =>
 
       // throw "";
 
-      updateUnits(units);
+      updateUnits(unit);
+      updateResources(resource);
+      updateCampuses(campus);
+      updateBuildings(buildingName, latitude, longitude, campus);
       // UPDATE TABLES
     });
 

@@ -4,11 +4,11 @@ export const updateBuildings = (
   building: string,
   latitude: number,
   longitude: number,
-  campusID: number
+  campus: string
 ) => {
-  const query =
-    "INSERT OR IGNORE INTO buildings(label, latitude, longitude, campusID) VALUES (?, ?, ?, ?)";
-  const params = [building, latitude, longitude, campusID];
+  const query = `INSERT OR IGNORE INTO buildings(label, latitude, longitude, campusID)
+      VALUES ((?), (?), (?), (SELECT id FROM campuses WHERE label=(?)))`;
+  const params = [building, latitude, longitude, campus];
   db.serialize(() => {
     db.run(query, params);
   });
