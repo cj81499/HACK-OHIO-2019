@@ -4,6 +4,11 @@ import { Usage, DateRange } from "../db/usage";
 export const router = Router();
 
 router.get("/", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.json(await getUsageJson(req.query));
 });
 
@@ -21,7 +26,7 @@ const getUsageJson = async (query: any) => {
   } else {
     json.usages = await Usage.find({
       building,
-      range
+      range: rangeOrError
     });
   }
   return json;

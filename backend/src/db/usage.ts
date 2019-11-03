@@ -72,7 +72,7 @@ export class Usage {
       ? ` WHERE ${whereOptions.join(" AND ")}`
       : "";
 
-    const query = `SELECT * FROM daily_usages${whereString} LIMIT 1000`;
+    const query = `SELECT * FROM daily_usages${whereString} LIMIT 10000`;
     const usages: usageInfo[] = await db.all(query, params);
     return usages.map(usage => new Usage(usage));
   }
