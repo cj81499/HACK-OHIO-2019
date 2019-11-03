@@ -12,13 +12,17 @@ const getUsageJson = async (query: any) => {
   const { building, range } = query;
   // range is a string of two ISO 8601 dates/times separated by a "|" character.
   // For example: "2019-11-02T20:41:50Z|2019-11-02T20:41:50Z"
+  // TODO: make sure there are query params so the entire DB is not requested
 
   const rangeOrError = stringToDateRange(range);
 
   if (rangeOrError instanceof Error) {
     json.error = rangeOrError;
   } else {
-    json.usages = await Usage.find({ building, range });
+    json.usages = await Usage.find({
+      building,
+      range
+    });
   }
   return json;
 };
