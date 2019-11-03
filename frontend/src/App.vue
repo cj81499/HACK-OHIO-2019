@@ -6,12 +6,10 @@
       <div class="grid-items">
         <Table />
       </div>
-      <div class="grid-items">
-        <Table />
+      <div class="grid-items rounded">
+        <MapPreview />
       </div>
-      <div class="grid-items">
-        <Table />
-      </div>
+      <div class="grid-items rounded"></div>
     </div>
   </div>
 </template>
@@ -49,8 +47,11 @@ body {
   grid-template-columns: auto auto auto;
   padding: 10px;
 }
-.grid-items {
-  border: 0.5px solid #00aaff;
+
+.rounded {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #ccc;
   border-radius: 10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),

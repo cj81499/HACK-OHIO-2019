@@ -1,6 +1,25 @@
 <template>
   <div>
-    <vue-good-table class="table" :columns="columns" :rows="rows" />
+    <vue-good-table
+      class="table"
+      :columns="columns"
+      :rows="rows"
+      :pagination-options="{
+        enabled: true,
+        perPage: 10,
+        mode: 'pages',
+        nextLabel: '',
+        prevLabel: '',
+        rowsPerPageLabel: 'Rows per page',
+        ofLabel: 'of',
+        pageLabel: '',
+        allLabel: 'All',
+      }"
+      :sort-options="{
+        initialSortBy: {field: 'meterReading', type: 'desc'}
+      }"
+      styleClass="vgt-table striped"
+    />
   </div>
 </template>
 
@@ -20,12 +39,13 @@ export default {
       columns: [
         {
           label: "Meter Location",
-          field: "meterLocation"
+          field: "meterLocation",
+          sortable: false
         },
         {
           label: "Meter Reading",
           field: "meterReading",
-          type: "number"
+          sortable: true
         }
       ],
       rows: [
@@ -67,6 +87,12 @@ export default {
 
 <style scoped>
 .table {
-  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+}
+.vgt-wrap,
+.vgt-wrap__footer {
+  border-radius: 0px 0px 10px 10px;
 }
 </style>
