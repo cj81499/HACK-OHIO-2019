@@ -13,6 +13,7 @@
         <Table />
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import Header from "./components/Header.vue";
 import Navbar from "./components/Navbar.vue";
 import MapPreview from "./components/MapPreview.vue";
 import Table from "./components/Table.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
@@ -28,7 +30,8 @@ export default {
     Header,
     Navbar,
     MapPreview,
-    Table
+    Table,
+    Footer
   }
 };
 </script>
