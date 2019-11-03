@@ -9,7 +9,9 @@
       <div class="grid-items">
         <MapPreview />
       </div>
-      <div class="grid-items"></div>
+      <div class="grid-items">
+        <Chart :chartdata="chartData" :options="options" />
+      </div>
     </div>
     <Footer />
   </div>
@@ -21,6 +23,7 @@ import Navbar from "./components/Navbar.vue";
 import MapPreview from "./components/MapPreview.vue";
 import Table from "./components/Table.vue";
 import Footer from "./components/Footer.vue";
+import Chart from "./components/Chart.vue";
 
 export default {
   name: "app",
@@ -29,18 +32,33 @@ export default {
     Navbar,
     MapPreview,
     Table,
+    Chart,
     Footer
+  },
+  data: () => {
+    return {
+      chartData: {
+        labels: ["January", "February"],
+        datasets: [
+          {
+            label: "Data One",
+            backgroundColor: "#f87979",
+            data: [40, 20]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    };
   }
 };
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import "./styles/constants.scss";
-
-@font-face {
-  font-family: "Avenir";
-  src: url("assets/Avenir Roman.otf");
-}
 
 html,
 body {
@@ -59,19 +77,17 @@ body {
 
 .grid-items {
   $shadow: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow,
-    0 4px 4px $shadow, 0 8px 8px $shadow,
-    0 16px 16px $shadow;
+  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow, 0 4px 4px $shadow,
+    0 8px 8px $shadow, 0 16px 16px $shadow;
   border: 1px solid #ccc;
   border-radius: $border-radius;
   padding: 1rem;
 }
 
-
 #app {
   display: flex;
   flex-direction: column;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
