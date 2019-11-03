@@ -37,9 +37,7 @@ export default {
 }
 
 #map {
-  $margin: 15px;
-  margin: $margin;
-  height: calc(100% - 2 * #{$margin});
+  height: 100%;
   border-radius: $border-radius;
 }
 </style>
