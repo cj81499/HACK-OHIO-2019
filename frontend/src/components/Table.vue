@@ -1,6 +1,25 @@
 <template>
   <div>
-    <vue-good-table class="table" :columns="columns" :rows="rows" />
+    <vue-good-table
+      class="table"
+      :columns="columns"
+      :rows="rows"
+      :pagination-options="{
+        enabled: true,
+        perPage: 10,
+        mode: 'pages',
+        nextLabel: '',
+        prevLabel: '',
+        rowsPerPageLabel: 'Rows per page',
+        ofLabel: 'of',
+        pageLabel: '',
+        allLabel: 'All',
+      }"
+      :sort-options="{
+        initialSortBy: {field: 'meterReading', type: 'desc'}
+      }"
+      styleClass="vgt-table striped"
+    />
   </div>
 </template>
 
@@ -20,12 +39,13 @@ export default {
       columns: [
         {
           label: "Meter Location",
-          field: "meterLocation"
+          field: "meterLocation",
+          sortable: false
         },
         {
           label: "Meter Reading",
           field: "meterReading",
-          type: "number"
+          sortable: true
         }
       ],
       rows: [
@@ -65,8 +85,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.table {
-  padding: 20px;
-}
+<style scoped lang="scss">
 </style>

@@ -9,10 +9,9 @@
       <div class="grid-items">
         <MapPreview />
       </div>
-      <div class="grid-items">
-        <Table />
-      </div>
+      <div class="grid-items"></div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -21,6 +20,7 @@ import Header from "./components/Header.vue";
 import Navbar from "./components/Navbar.vue";
 import MapPreview from "./components/MapPreview.vue";
 import Table from "./components/Table.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
@@ -28,7 +28,8 @@ export default {
     Header,
     Navbar,
     MapPreview,
-    Table
+    Table,
+    Footer
   }
 };
 </script>
@@ -53,18 +54,19 @@ body {
   grid-column-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
-
   flex-grow: 1;
 }
 
 .grid-items {
-  border: 0.5px solid #00aaff;
+  $shadow: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 1px $shadow, 0 2px 2px $shadow,
+    0 4px 4px $shadow, 0 8px 8px $shadow,
+    0 16px 16px $shadow;
+  border: 1px solid #ccc;
   border-radius: $border-radius;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-    0 16px 16px rgba(0, 0, 0, 0.12);
-  height: 100%;
+  padding: 1rem;
 }
+
 
 #app {
   display: flex;
