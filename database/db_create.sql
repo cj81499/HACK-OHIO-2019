@@ -3,89 +3,88 @@
 
 -- tables
 -- Table: buildings
-CREATE TABLE buildings (
-    id INT NOT NULL,
-    name TEXT NOT NULL,
+CREATE TABLE IF NOT EXISTS buildings (
+    id INT NOT NULL PRIMARY KEY,
+    label TEXT NOT NULL,
     latitude DOUBLE NOT NULL,
     longitude DOUBLE NOT NULL,
     campusID INT NOT NULL,
-    CONSTRAINT buildings_pk PRIMARY KEY (id)
+    FOREIGN KEY(campusID) REFERENCES campuses(id)
 );
 
-CREATE INDEX building_name ON buildings (name);
+CREATE INDEX building_name ON buildings (label);
 
 CREATE INDEX lat_idx ON buildings (latitude);
 
 CREATE INDEX long_idx ON buildings (longitude);
 
 -- Table: campuses
-CREATE TABLE campuses (
-    id INT NOT NULL,
-    name TEXT NOT NULL,
-    CONSTRAINT campuses_pk PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS campuses (
+    id INT NOT NULL PRIMARY KEY,
+    label TEXT NOT NULL
 );
 
-CREATE INDEX campus_name ON campuses (name);
+CREATE INDEX campus_name ON campuses (label);
 
 -- Table: meters
-CREATE TABLE meters (
-    id INT NOT NULL,
-    name TEXT NOT NULL,
+CREATE TABLE IF NOT EXISTS meters (
+    id INT NOT NULL PRIMARY KEY,
+    label TEXT NOT NULL,
     buildingID INT NOT NULL,
     unitID INT NOT NULL,
     resourceID INT NOT NULL,
-    CONSTRAINT meters_pk PRIMARY KEY (id)
+    FOREIGN KEY(resourceID) REFERENCES resources(id),
+    FOREIGN KEY(buildingID) REFERENCES buildings(id),
+    FOREIGN KEY(unitID) REFERENCES units(id)
 );
 
-CREATE INDEX meter_name ON meters (name);
+CREATE INDEX meter_name ON meters (label);
 
 -- Table: readings
-CREATE TABLE readings (
-    id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS readings (
+    id INT NOT NULL PRIMARY KEY,
     meterID INT NOT NULL,
-    value DOUBLE NOT NULL,
-    time TEXT NOT NULL,
-    CONSTRAINT readings_pk PRIMARY KEY (id)
+    measurement DOUBLE NOT NULL,
+    created DATETIME NOT NULL,
+    FOREIGN KEY(meterID) REFERENCES meters(id)
 );
 
-CREATE INDEX time_idx ON readings (time);
+CREATE INDEX time_idx ON readings (created);
 
 -- Table: resources
-CREATE TABLE resources (
-    id INT NOT NULL,
-    name TEXT NOT NULL,
-    CONSTRAINT resources_pk PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS resources (
+    id INT NOT NULL PRIMARY KEY,
+    label TEXT NOT NULL
 );
 
-CREATE INDEX resource_name ON resources (name);
+CREATE INDEX resource_name ON resources (label);
 
 -- Table: units
-CREATE TABLE units (
-    id INT NOT NULL,
-    unit TEXT NOT NULL,
-    CONSTRAINT units_pk PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS units (
+    id INT NOT NULL PRIMARY KEY,
+    unit TEXT NOT NULL
 );
 
 -- foreign keys
 -- Reference: buildings_campuses (table: buildings)
-ALTER TABLE buildings ADD CONSTRAINT buildings_campuses FOREIGN KEY buildings_campuses (campusID)
-    REFERENCES campuses (id);
+--ALTER TABLE buildings ADD CONSTRAINT buildings_campuses FOREIGN KEY buildings_campuses (campusID)
+--    REFERENCES campuses (id);
 
 -- Reference: metadata_resources (table: meters)
-ALTER TABLE meters ADD CONSTRAINT metadata_resources FOREIGN KEY metadata_resources (resourceID)
-    REFERENCES resources (id);
+-- ALTER TABLE meters ADD CONSTRAINT metadata_resources FOREIGN KEY metadata_resources (resourceID)
+--     REFERENCES resources (id);
 
 -- Reference: meters_buildings (table: meters)
-ALTER TABLE meters ADD CONSTRAINT meters_buildings FOREIGN KEY meters_buildings (buildingID)
-    REFERENCES buildings (id);
+-- ALTER TABLE meters ADD CONSTRAINT meters_buildings FOREIGN KEY meters_buildings (buildingID)
+--     REFERENCES buildings (id);
 
 -- Reference: meters_units (table: meters)
-ALTER TABLE meters ADD CONSTRAINT meters_units FOREIGN KEY meters_units (unitID)
-    REFERENCES units (id);
+-- ALTER TABLE meters ADD CONSTRAINT meters_units FOREIGN KEY meters_units (unitID)
+--     REFERENCES units (id);
 
 -- Reference: readings_meters (table: readings)
-ALTER TABLE readings ADD CONSTRAINT readings_meters FOREIGN KEY readings_meters (meterID)
-    REFERENCES meters (id);
+-- ALTER TABLE readings ADD CONSTRAINT readings_meters FOREIGN KEY readings_meters (meterID)
+--     REFERENCES meters (id);
 
 -- End of file.
 
