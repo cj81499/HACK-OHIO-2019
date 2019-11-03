@@ -10,6 +10,7 @@
       </div>
         <Charts />
     </div>
+    </div>
 </template>
 
 <script>
