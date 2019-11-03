@@ -1,5 +1,5 @@
 import express from "express";
-import { router as usageRouter } from "./routes/usage";
+import { router as measurementRouter } from "./routes/measurement";
 
 export const app = express();
 
@@ -12,4 +12,4 @@ app.listen(PORT, () => {
 //   res.json({ message: "this works" });
 // });
 
-app.use("/usages", usageRouter);
+app.use("/measurements", measurementRouter);
