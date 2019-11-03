@@ -1,4 +1,4 @@
-import { createReadStream, readdirSync } from "fs";
+import { createReadStream, readdirSync, writeFileSync } from "fs";
 import { createInterface } from "readline";
 import { updateUnits } from "./updateUnits";
 
@@ -95,25 +95,35 @@ const processDataFile = (
   });
 
 const main = async () => {
-  const DATA_DIR = "./hackOHI.O/DataHourly/";
-  const hourly_data_filenames = readdirSync(DATA_DIR);
+  // setup DB
+  const DB_FILE = "./database.db";
+  writeFileSync(DB_FILE, "");
 
-  await processConfigFile();
+  var fs = require("fs"),
+    spawn = require("child_process").spawn,
+    child = spawn("sqlite3", [DB_FILE]);
 
-  throw "lksdjhfa";
+  fs.createReadStream("./db_create.sql").pipe(child.stdin);
 
-  let prom = processDataFile(DATA_DIR, hourly_data_filenames, 0);
-  while (await prom) {
-    prom = prom.then(next_index => {
-      if (next_index < hourly_data_filenames.length) {
-        console.log(`Opening ${hourly_data_filenames[next_index]}`);
-        return processDataFile(DATA_DIR, hourly_data_filenames, next_index);
-      }
-      return 0;
-    });
-  }
+  child.on("exit", async () => {
+    const DATA_DIR = "./hackOHI.O/DataHourly/";
+    const hourly_data_filenames = readdirSync(DATA_DIR);
 
-  console.log("done");
+    await processConfigFile();
+
+    let prom = processDataFile(DATA_DIR, hourly_data_filenames, 0);
+    while (await prom) {
+      prom = prom.then(next_index => {
+        if (next_index < hourly_data_filenames.length) {
+          console.log(`Opening ${hourly_data_filenames[next_index]}`);
+          return processDataFile(DATA_DIR, hourly_data_filenames, next_index);
+        }
+        return 0;
+      });
+    }
+
+    console.log("done");
+  });
 };
 
 main().catch(reason => {
