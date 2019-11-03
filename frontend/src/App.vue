@@ -20,12 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import "./styles/constants.scss";
-
-@font-face {
-  font-family: "Avenir";
-  src: url("assets/Avenir Roman.otf");
-}
 
 html,
 body {
@@ -37,7 +33,7 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
