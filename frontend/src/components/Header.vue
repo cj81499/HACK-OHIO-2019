@@ -3,6 +3,7 @@
     <div class="image-wrapper">
       <img src="../assets/logo.svg" alt="ENGIE logo" />
     </div>
+    <div class="dropdown-indicator"></div>
     <span class="school-name">The Ohio State University</span>
   </div>
 </template>
@@ -27,6 +28,7 @@ export default {
 }
 
 .school-name {
+  padding-left: 8px;
   color: white;
   font-size: 1.25em;
   float: right;
@@ -35,6 +37,14 @@ export default {
 .image-wrapper {
   flex-grow: 1;
   text-align: left;
+}
+
+.dropdown-indicator {
+  width: 0; 
+  height: 0; 
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.5em solid white;
 }
 
 img {
