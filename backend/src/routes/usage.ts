@@ -4,21 +4,48 @@ import { Usage, DateRange } from "../db/usage";
 export const router = Router();
 
 router.get("/", async (req, res, next) => {
+  res.json(await getUsageJson(req.query));
+});
+
+const getUsageJson = async (query: any) => {
   const json: any = {};
-  let range: DateRange | undefined = undefined;
+  const { building, range } = query;
+  // range is a string of two ISO 8601 dates/times separated by a "|" character.
+  // For example: "2019-11-02T20:41:50Z|2019-11-02T20:41:50Z"
 
-  try {
-    if (req.query.range) {
-      let [start, end] = req.query.range.split("|");
-      range = new DateRange(new Date(start), new Date(end));
-    }
+  const rangeOrError = stringToDateRange(range);
 
-    const usages = await Usage.find({ building: req.query.building, range });
-    json.usages = usages;
-  } catch (err) {
-    console.error(err);
-    json.error = err;
+  if (rangeOrError instanceof Error) {
+    json.error = rangeOrError;
+  } else {
+    json.usages = await Usage.find({ building, range });
+  }
+  return json;
+};
+
+/**
+ * converts a string of two ISO 8601 dates/times separated by a "|" character to a DateRange
+ *
+ * @param rangeStr the string to convert
+ *        For example: "2019-11-02T20:41:50Z|2019-11-02T20:41:50Z"
+ */
+const stringToDateRange = (rangeStr: string | undefined) => {
+  if (!rangeStr) {
+    return undefined;
   }
 
-  res.json(json);
-});
+  const rangeStrs = rangeStr.split("|");
+
+  if (rangeStrs.length != 2) {
+    return new Error("Invalid Date");
+  }
+
+  const dates = rangeStrs.map(dateStr => new Date(dateStr));
+
+  if (dates.some(d => isNaN(d.getTime()))) {
+    return new Error("Invalid Date");
+  }
+
+  const [start, end] = dates;
+  return new DateRange(start, end);
+};

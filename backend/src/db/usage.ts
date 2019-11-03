@@ -19,9 +19,41 @@ export class DateRange {
   }
 }
 
+interface usageInfo {
+  building: string;
+  current_value: number;
+  meter_id: string;
+  status_code: number;
+  status: string;
+  time: string;
+  unit: string;
+}
+
 export class Usage {
+  building: string;
+  current_value: number;
+  meter_id: string;
+  status_code: number;
+  status: string;
+  time: Date;
+  unit: string;
+  constructor(info: usageInfo) {
+    this.building = info.building;
+    this.current_value = info.current_value;
+    this.meter_id = info.meter_id;
+    this.status = info.status;
+    this.status_code = info.status_code;
+    this.time = new Date(info.time);
+    this.unit = info.unit;
+  }
+
+  /**
+   * Get energy usage information. Limited to 1000 results.
+   *
+   * @param {string} [options.building] a string of the name of the building to search by
+   * @param {DateRange} [options.range] a DateRange to search between
+   */
   static async find(options: { building?: string; range?: DateRange }) {
-    console.log(options);
     const whereOptions: string[] = [];
     const params: string[] = [];
 
@@ -40,9 +72,8 @@ export class Usage {
       ? ` WHERE ${whereOptions.join(" AND ")}`
       : "";
 
-    const query = `SELECT * FROM daily_usages${whereString}`;
-
-    console.log(params);
-    return await db.all(query, params);
+    const query = `SELECT * FROM daily_usages${whereString} LIMIT 1000`;
+    const usages: usageInfo[] = await db.all(query, params);
+    return usages.map(usage => new Usage(usage));
   }
 }

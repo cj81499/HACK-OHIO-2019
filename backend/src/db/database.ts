@@ -35,7 +35,7 @@ export class Database {
     });
   }
 
-  all(sql: string, params: any[] = []) {
+  all(sql: string, params: any[] = []): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this.db.all(sql, params, (err, rows) => {
         if (err) {
