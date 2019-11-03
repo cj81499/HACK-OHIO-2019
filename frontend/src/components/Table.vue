@@ -41,37 +41,124 @@ export default {
         {
           label: "Meter Location",
           field: "meterLocation",
-          sortable: false
+          sortable: false,
+          type: "text"
         },
         {
           label: "Meter Reading",
           field: "meterReading",
-          sortable: true
+          sortable: true,
+          type: "number"
         }
       ],
       rows: [
         {
           id: 1,
-          meterLocation: "John",
+          meterLocation: "Alex",
           meterReading: 23.45
         },
         {
           id: 2,
-          meterLocation: "John",
-          meterReading: 23.45
+          meterLocation: "Cal",
+          meterReading: 2.45
         },
         {
           id: 3,
-          meterLocation: "John",
-          meterReading: 23.45
+          meterLocation: "danny",
+          meterReading: 2345
         },
         {
           id: 4,
+          meterLocation: "Devin",
+          meterReading: 234.5
+        },
+        {
+          id: 5,
+          meterLocation: "John",
+          meterReading: 0.2345
+        },
+        {
+          id: 6,
           meterLocation: "John",
           meterReading: 23.45
         },
         {
-          id: 5,
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
+          meterLocation: "John",
+          meterReading: 23.45
+        },
+        {
+          id: 6,
           meterLocation: "John",
           meterReading: 23.45
         },
