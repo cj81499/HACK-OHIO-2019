@@ -1,0 +1,18 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "Database for HACK OHI/O",
+  "main": "index.ts",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.5",
+    "sqlite3": "^4.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
