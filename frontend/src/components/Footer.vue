@@ -22,6 +22,7 @@ export default {};
 .powered {
   font-size: 0.75em;
   font-weight: bold;
+  margin-right: 5px;
 }
 
 #footer-logo {
