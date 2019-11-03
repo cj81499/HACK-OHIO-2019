@@ -22,8 +22,8 @@ const processConfigFile = () =>
       const elements = line.trim().split('","');
 
       const [
-        _buildingId,
-        meterId,
+        buildingIdStr,
+        meter,
         _description,
         unit,
         resource,
@@ -44,13 +44,15 @@ const processConfigFile = () =>
       const [latitude, longitude] = [latitudeStr, longitudeStr].map(e =>
         parseFloat(e)
       );
+      const [buildingId] = [buildingIdStr].map(e => parseInt(e));
 
       // throw "";
 
       updateUnits(unit);
       updateResources(resource);
       updateCampuses(campus);
-      updateBuildings(buildingName, latitude, longitude, campus);
+      updateBuildings(buildingId, buildingName, latitude, longitude, campus);
+      updateMeters(meter, buildingId, unit, resource);
       // UPDATE TABLES
     });
 

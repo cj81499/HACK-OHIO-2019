@@ -4,7 +4,7 @@
 -- tables
 -- Table: buildings
 CREATE TABLE IF NOT EXISTS buildings (
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY,
     label TEXT NOT NULL UNIQUE,
     latitude DOUBLE NOT NULL,
     longitude DOUBLE NOT NULL,
