@@ -13,6 +13,11 @@ export default {
       default: null
     }
   },
+  methods: {
+    refresh() {
+      this.renderChart(this.chartdata, this.options);
+    }
+  },
   mounted() {
     this.renderChart(this.chartdata, this.options);
   }

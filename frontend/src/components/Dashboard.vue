@@ -6,88 +6,21 @@
     <div class="card">
       <MapPreview />
     </div>
-    <div class="charts">
-      <div class="card">
-        <Chart :styles="chartStyles" :chartdata="monthData" :options="monthOptions" />
-      </div>
-      <div class="chart-stats">
-        <div>Average Reading: 23.5</div>
-        <div>Total Usage: 2.98K</div>
-      </div>
-      <div class="card">
-        <Chart :styles="chartStyles" :chartdata="yearData" :options="yearOptions" />
-      </div>
-      <div class="chart-stats">
-        <div>Average Reading: 23.5</div>
-        <div>Total Usage: 2.98K</div>
-      </div>
-    </div>
+    <Charts />
   </div>
 </template>
 
 <script>
 import MapPreview from "./MapPreview.vue";
 import Table from "./Table.vue";
-import Chart from "./Chart.vue";
+import Charts from "./Charts.vue";
 
 export default {
   name: "Dashboard",
   components: {
     Table,
     MapPreview,
-    Chart
-  },
-  computed: {
-    chartStyles() {
-      return {
-        height: "25vh",
-        position: "relative"
-      };
-    }
-  },
-  data() {
-    return {
-      monthData: {
-        labels: ["January", "February"],
-        datasets: [
-          {
-            backgroundColor: "#f87979",
-            data: [40, 20]
-          }
-        ]
-      },
-      monthOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        title: {
-          display: true,
-          text: "Energy Usage for the Month of August"
-        }
-      },
-      yearData: {
-        labels: ["January", "February"],
-        datasets: [
-          {
-            backgroundColor: "#00aaff",
-            data: [40, 20]
-          }
-        ]
-      },
-      yearOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        title: {
-          display: true,
-          text: "Energy Usage for the Year 2019"
-        }
-      }
-    };
+    Charts
   }
 };
 </script>
@@ -109,19 +42,5 @@ export default {
   border: 1px solid #ccc;
   border-radius: $border-radius;
   padding: 1rem;
-}
-
-.chart-stats {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  text-align: left;
-  padding: 20px 10px;
-  font-weight: bold;
-
-  div:first-child {
-    flex-grow: 1;
-  }
 }
 </style>
